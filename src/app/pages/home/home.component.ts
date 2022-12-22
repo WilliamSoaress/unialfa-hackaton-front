@@ -19,6 +19,6 @@ export class HomeComponent {
     if (!estaLogado) {
       return this.router.navigateByUrl('/login');
     }
-    return null;
+    return this.router.navigateByUrl(this.router.url);
   }
 }
