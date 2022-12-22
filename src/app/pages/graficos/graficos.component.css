@@ -1,0 +1,22 @@
+#chartContainer {
+  width: 1000px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.canvasjs-chart-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.canvasjs-chart-credit {
+  display: none;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  align-items: center;
+}

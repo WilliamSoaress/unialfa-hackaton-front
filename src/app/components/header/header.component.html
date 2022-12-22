@@ -1,0 +1,51 @@
+<mat-toolbar color="primary" hidden="hidden" appHideHeader>
+  <mat-toolbar-row>
+    <span (click)="home()">Academia App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button
+        *ngIf="
+          perfilUsuario === 'ADMIN' ||
+          perfilUsuario === 'ALUNO' ||
+          perfilUsuario === 'PROFESSOR'
+        "
+        mat-menu-item
+        (click)="home()"
+      >
+        Home
+      </button>
+      <button
+        *ngIf="perfilUsuario === 'ADMIN' || perfilUsuario === 'PROFESSOR'"
+        mat-menu-item
+        (click)="new()"
+      >
+        Avaliar
+      </button>
+      <button
+        *ngIf="
+          perfilUsuario === 'ADMIN' ||
+          perfilUsuario === 'ALUNO' ||
+          perfilUsuario === 'PROFESSOR'
+        "
+        mat-menu-item
+        (click)="avaliacoes()"
+      >
+        Avaliações
+      </button>
+      <button
+        *ngIf="
+          perfilUsuario === 'ADMIN' ||
+          perfilUsuario === 'ALUNO' ||
+          perfilUsuario === 'PROFESSOR'
+        "
+        mat-menu-item
+        (click)="grafico()"
+      >
+        Gráfico
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>

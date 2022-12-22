@@ -1,0 +1,68 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-card {
+  width: 90%;
+  height: auto;
+  margin: 20px;
+}
+
+h1 {
+  font-size: 32px;
+  color: #3f51b5;
+}
+
+p {
+  font-size: 16px;
+  color: #212121;
+}
+
+mat-toolbar {
+  background-color: #3f51b5;
+}
+
+mat-card {
+  background-color: #fff;
+  color: #212121;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px; /* adiciona bordas arredondadas ao card */
+}
+
+mat-divider {
+  border-top-color: #bdbdbd;
+  border-top-width: 1px;
+}
+
+mat-card-title {
+  font-size: 24px;
+  color: #3f51b5;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+mat-card-content {
+  margin: 16px;
+  font-size: 16px;
+}
+
+mat-grid-tile mat-card mat-card-title {
+  margin: 8px;
+  font-size: 20px;
+  color: #3f51b5;
+}
+
+pre {
+  font-family: monospace;
+  font-size: 14px;
+  color: #212121;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.mat-mdc-card-content:last-child {
+  padding-bottom: 50px;
+}

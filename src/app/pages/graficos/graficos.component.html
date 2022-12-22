@@ -1,0 +1,28 @@
+<div class="flex-container">
+  <form [formGroup]="formGroup">
+    <mat-form-field>
+      <input
+        type="text"
+        placeholder="Nome do aluno"
+        aria-label="Nome do aluno"
+        matInput
+        formControlName="aluno"
+        [formControl]="nomeAlunoCtrl"
+        [matAutocomplete]="auto"
+        [required]="true"
+      />
+      <mat-hint>Informe o aluno</mat-hint>
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        (optionSelected)="capturarAluno($event.option.value)"
+        [displayWith]="displayFnAluno"
+      >
+        <mat-option *ngFor="let aluno of alunos" [value]="aluno">
+          {{ aluno.nome }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</div>
+
+<div id="chartContainer" willReadFrequently="true"></div>
