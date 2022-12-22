@@ -24,6 +24,15 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+
+  verificaPerfilAluno(){
+    if(this.perfilUsuario === 'ALUNO'){
+      return false
+    }
+    return true
+  }
+
+
   permissoes() {
     let tokenDecodificado = {
       sub: '',

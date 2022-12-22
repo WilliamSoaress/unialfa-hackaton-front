@@ -6,46 +6,12 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button
-        *ngIf="
-          perfilUsuario === 'ADMIN' ||
-          perfilUsuario === 'ALUNO' ||
-          perfilUsuario === 'PROFESSOR'
-        "
-        mat-menu-item
-        (click)="home()"
-      >
-        Home
-      </button>
-      <button
-        *ngIf="perfilUsuario === 'ADMIN' || perfilUsuario === 'PROFESSOR'"
-        mat-menu-item
-        (click)="new()"
-      >
+      <button mat-menu-item (click)="home()">Home</button>
+      <button *ngIf="verificaPerfilAluno()" mat-menu-item (click)="new()">
         Avaliar
       </button>
-      <button
-        *ngIf="
-          perfilUsuario === 'ADMIN' ||
-          perfilUsuario === 'ALUNO' ||
-          perfilUsuario === 'PROFESSOR'
-        "
-        mat-menu-item
-        (click)="avaliacoes()"
-      >
-        Avaliações
-      </button>
-      <button
-        *ngIf="
-          perfilUsuario === 'ADMIN' ||
-          perfilUsuario === 'ALUNO' ||
-          perfilUsuario === 'PROFESSOR'
-        "
-        mat-menu-item
-        (click)="grafico()"
-      >
-        Gráfico
-      </button>
+      <button mat-menu-item (click)="avaliacoes()">Avaliações</button>
+      <button mat-menu-item (click)="grafico()">Gráfico</button>
     </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>

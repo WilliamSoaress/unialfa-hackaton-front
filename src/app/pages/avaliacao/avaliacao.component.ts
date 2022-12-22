@@ -17,6 +17,7 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
+import jwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-avaliacao',
@@ -33,6 +34,7 @@ export class AvaliacaoComponent implements OnInit {
   professores: Professor[] = [];
   aluno: Aluno | undefined;
   professor: Professor | undefined;
+  perfilUsuario: string;
 
   constructor(
     private fb: FormBuilder,
@@ -47,6 +49,7 @@ export class AvaliacaoComponent implements OnInit {
 
   ngOnInit(): void {
     this.redirect();
+    this.permissoes();
     this.form = this.fb.group({
       id: [null],
       aluno: [null, [Validators.required]],
@@ -66,6 +69,49 @@ export class AvaliacaoComponent implements OnInit {
       return this.router.navigateByUrl('/login');
     }
     return null;
+  }
+
+
+
+  openDialogAcessoNegado() {
+    this.dialog.open(GenericDialogComponent, {
+      data: {
+        titulo: 'Erro',
+        mensagem: 'Você não tem permissão para acessar essa página..',
+      },
+    });
+  }
+
+  podeAcessarTela(){
+    if(this.perfilUsuario === "ALUNO"){
+      this.openDialogAcessoNegado();
+      this.router.navigateByUrl('/');
+    }
+  }
+
+  permissoes() {
+    let tokenDecodificado = {
+      sub: '',
+      exp: '',
+    };
+    const token = localStorage.getItem('authToken');
+
+    if (token != null) {
+      tokenDecodificado = jwtDecode(token);
+      this.authService.buscarPerfil(tokenDecodificado.sub).subscribe(
+        (perfilUsuario: string) => {
+          this.perfilUsuario = perfilUsuario;
+          this.podeAcessarTela();
+          console.log(this.perfilUsuario);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.router.navigateByUrl('/login');
+    }
+
   }
 
   /**
